@@ -1,0 +1,29 @@
+name: Verify and build
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Synthetic checks and UI previews
+        shell: pwsh
+        run: ./scripts/verify.ps1 -Preview
+      - name: Build portable executable
+        shell: pwsh
+        run: ./scripts/build.ps1 -OutputDirectory outputs/release
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: CodexSwitcher-win-x64
+          path: outputs/release/
+          if-no-files-found: error

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF><UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>CodexSwitcher</AssemblyName>
+    <Version>1.6.0</Version><Product>Codex Switcher</Product>
+    <Description>Пять аккаунтов Codex и текущие лимиты для Windows</Description>
+    <ApplicationIcon>Assets/Switcher.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../CodexSwitcher.Core/CodexSwitcher.Core.csproj"/></ItemGroup>
+  <ItemGroup><Resource Include="Assets/Switcher.ico"/></ItemGroup>
+</Project>
+
+
+

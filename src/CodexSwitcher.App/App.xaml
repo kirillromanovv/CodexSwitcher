@@ -1,0 +1,47 @@
+<Application x:Class="CodexSwitcher.App.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ShutdownMode="OnExplicitShutdown">
+  <Application.Resources>
+    <SolidColorBrush x:Key="Canvas" Color="#F2F5F2"/>
+    <SolidColorBrush x:Key="Ink" Color="#1D2922"/>
+    <SolidColorBrush x:Key="Muted" Color="#65736A"/>
+    <SolidColorBrush x:Key="Line" Color="#DDE5DE"/>
+    <SolidColorBrush x:Key="Accent" Color="#167A5D"/>
+    <SolidColorBrush x:Key="Warning" Color="#996416"/>
+    <SolidColorBrush x:Key="Danger" Color="#A93E3E"/>
+    <Style TargetType="TextBlock"><Setter Property="FontSize" Value="14"/></Style>
+    <Style TargetType="Button">
+      <Setter Property="Background" Value="{DynamicResource Surface}"/><Setter Property="Foreground" Value="{DynamicResource Ink}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource Line}"/><Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Padding" Value="15,10"/><Setter Property="MinHeight" Value="40"/>
+      <Setter Property="Cursor" Value="Hand"/><Setter Property="FontSize" Value="13"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="Plate" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="7" Padding="{TemplateBinding Padding}">
+          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}"/>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Plate" Property="Opacity" Value="0.88"/></Trigger>
+          <Trigger Property="IsPressed" Value="True"><Setter TargetName="Plate" Property="Opacity" Value="0.65"/></Trigger>
+          <Trigger Property="IsEnabled" Value="False"><Setter TargetName="Plate" Property="Opacity" Value="0.45"/></Trigger>
+          <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Plate" Property="BorderBrush" Value="{DynamicResource Accent}"/><Setter TargetName="Plate" Property="BorderThickness" Value="2"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="Primary" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+      <Setter Property="Background" Value="{DynamicResource Accent}"/><Setter Property="Foreground" Value="{DynamicResource AccentText}"/><Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
+    </Style>
+    <Style x:Key="LinkButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+      <Setter Property="Background" Value="Transparent"/><Setter Property="BorderBrush" Value="Transparent"/><Setter Property="Foreground" Value="{DynamicResource Muted}"/><Setter Property="MinHeight" Value="22"/><Setter Property="Padding" Value="2,2"/>
+    </Style>
+    <Style x:Key="QuotaBar" TargetType="ProgressBar">
+      <Setter Property="Minimum" Value="0"/><Setter Property="Maximum" Value="100"/><Setter Property="Height" Value="5"/><Setter Property="Background" Value="{DynamicResource Track}"/><Setter Property="Foreground" Value="{DynamicResource Accent}"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ProgressBar">
+        <Grid x:Name="PART_Track"><Border Background="{TemplateBinding Background}" CornerRadius="2.5"/><Border x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}" CornerRadius="2.5"/></Grid>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="ToolTip"><Setter Property="Background" Value="{DynamicResource Surface}"/><Setter Property="Foreground" Value="{DynamicResource Ink}"/><Setter Property="BorderBrush" Value="{DynamicResource Line}"/><Setter Property="Padding" Value="9"/></Style>
+    <Style TargetType="DatePicker"><Setter Property="Background" Value="{DynamicResource Surface}"/><Setter Property="Foreground" Value="{DynamicResource Ink}"/><Setter Property="BorderBrush" Value="{DynamicResource Line}"/></Style>
+    <Style TargetType="DatePickerTextBox"><Setter Property="Background" Value="{DynamicResource Surface}"/><Setter Property="Foreground" Value="{DynamicResource Ink}"/><Setter Property="BorderBrush" Value="{DynamicResource Line}"/></Style>
+    <Style TargetType="ScrollBar"><Setter Property="Background" Value="{DynamicResource Canvas}"/></Style>
+  </Application.Resources>
+</Application>
+
+
